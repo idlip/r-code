@@ -1,0 +1,20 @@
+#+title: Basic R learning notes
+#+author: Dilip
+
+/These are some of my initial R understanding notes, might be useful, might be another dump of basics. I'm not sure how this will be ny the time you see this repo./
+
+I use nixos, so having flake for specified channels is good and also let it manage all packages and libraries!
+Benefit of using flake here is, you will have the same exact (100%) setup like I have, same versions of everything. That is what *flake.lock* is for.
+
++ Development shell with mentioned packages via flakes
+#+begin_src shell
+  # option 1: with no cloning of repo
+  nix develop "github:idlip/r-code"
+
+  # option 2: inside local clone directory
+  nix develop
+#+end_src
+
+
++ TODO: Will make use of direnv too
++ TODO: Make use of literate org file for R learning with good documentation and index it in this readme.  
