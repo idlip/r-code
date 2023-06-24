@@ -1,0 +1,103 @@
+#+title: R Basics in Literate programming
+#+author: Dilip
+
+Btw I highly recommend official manual to read: https://cran.r-project.org/doc/manuals/r-devel/R-intro.html
+You can download it in Pdf or Epub or Html
+
+* Starter Console
+A good thing is, you dont have to save these R codes to any file. You can just hover the block and press =C-c '= which runs ~org-edit-special~ and then you can simply view it as native R buffer, also you can press =C-RET= (Control+Enter) on any line and it will show console in another buffer, which is really cool and effective. This opens up great flexibility and endless integration with Emacs. Ultimately you will realize that, this is *match made in Heaven!*
+
+** Basic Arithmetic
+#+begin_src R :results output drawer
+  5 + 6
+
+  a <- 5
+  b <- 6
+  a + b
+#+end_src
+
+#+RESULTS:
+:results:
+[1] 11
+[1] 11
+:end:
+
+** help(floor)
+First, it is better to self study and know what the function does, so you have the power of hack-ability. Rather than following some YouTube video.
+#+begin_src R
+  ## Go through this in console or press C-c C-d
+  ?floor
+
+  ## or see examples via
+  example(trunc)
+
+#+end_src
+
+#+begin_src R :results output drawer
+  ## Lets get some results
+  ceiling(2.1)
+
+  trunc(20.622728)
+
+  round(2.46)
+
+  signif(2.8373, 4)
+
+  ## Idk how lol, but this is *good behavior*
+  round(.5 + -4:8)
+  round(4.5)
+
+#+end_src
+
+** Vector
+Let's jump into data types
+
+#+begin_src R
+  ## First we set vector to a variable (scores)
+  scores <- c(10.4, 5.6, 3.1, 6.4, 21.7) 
+
+  ## Note that R is case-sensitive. Scores and scores are different
+  ## So that means, there can be 64 variables (2**6)
+  Scores
+
+  ## Call correctly
+  scores
+#+end_src
+
+** Nile Data
+Nile is a built-in dataset. It has 100 years of annual flow data, so lets use it.
+
+#+begin_src R :results output drawer
+  Nile # or print(Nile) is kinda same
+#+end_src
+
+#+RESULTS:
+:results:
+Time Series:
+Start = 1871 
+End = 1970 
+Frequency = 1 
+  [1] 1120 1160  963 1210 1160 1160  813 1230 1370 1140  995  935 1110  994 1020
+ [16]  960 1180  799  958 1140 1100 1210 1150 1250 1260 1220 1030 1100  774  840
+ [31]  874  694  940  833  701  916  692 1020 1050  969  831  726  456  824  702
+ [46] 1120 1100  832  764  821  768  845  864  862  698  845  744  796 1040  759
+ [61]  781  865  845  944  984  897  822 1010  771  676  649  846  812  742  801
+ [76] 1040  860  874  848  890  744  749  838 1050  918  986  797  923  975  815
+ [91] 1020  906  901 1170  912  746  919  718  714  740
+:end:
+
++ Let's see the mean flow of the data
+#+begin_src R :results output drawer
+  mean(Nile)
+  nileData <- mean(Nile)
+
+  ## We could also use other operator (round,ceiling,floor...)
+  round(mean(Nile))
+  ceiling(nileData)
+#+end_src
+
+#+RESULTS:
+:results:
+[1] 919.35
+:end:
+
