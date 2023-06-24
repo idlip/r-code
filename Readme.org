@@ -3,7 +3,9 @@
 
 /These are some of my initial R understanding notes, might be useful, might be another dump of basics. I'm not sure how this will be ny the time you see this repo./
 
-I use nixos, so having flake for specified channels is good and also let it manage all packages and libraries!
+IMHO, org-mode and R is match made in Heaven! As it opens up endless possibility.
+
+I use NixOS, so having flake for specified channels is good and also let it manage all packages and libraries!
 Benefit of using flake here is, you will have the same exact (100%) setup like I have, same versions of everything. That is what *flake.lock* is for.
 
 + Development shell with mentioned packages via flakes
