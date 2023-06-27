@@ -49,6 +49,16 @@ First, it is better to self study and know what the function does, so you have t
 
 #+end_src
 
+#+RESULTS:
+:results:
+[1] 3
+[1] 20
+[1] 2
+[1] 2.837
+ [1] -4 -2 -2  0  0  2  2  4  4  6  6  8  8
+[1] 4
+:end:
+
 ** Vector
 Let's jump into data types
 
@@ -56,13 +66,46 @@ Let's jump into data types
   ## First we set vector to a variable (scores)
   scores <- c(10.4, 5.6, 3.1, 6.4, 21.7) 
 
+  ## This can also be assigned other way
+  c(2.4, 17.2, 18.2, 5.7, -5.5) -> y
+
   ## Note that R is case-sensitive. Scores and scores are different
   ## So that means, there can be 64 variables (2**6)
   Scores
 
   ## Call correctly
   scores
+  y
+
+  ## print second element from the vector
+  y[2]
+
+  ## print range from first to third element
+  y[1:3]
+
+  ## Note: Index starts from 1 here. 0th index is just zero.
+  ## unlike python, Index starts from 1
+  y[0:1]
 #+end_src
+
+
++ Vector Algebra
+#+begin_src R :results output drawer
+  x = 7
+  y = 2
+  v <- 2*x + y + 1 
+  v
+
+  ## square root function
+  ## see similarly ?sqrt, log, exp, sin, cos, tan, abs
+  sqrt(v)
+#+end_src
+
+#+RESULTS:
+:results:
+[1] 17
+[1] 4.123106
+:end:
 
 ** Nile Data
 Nile is a built-in dataset. It has 100 years of annual flow data, so lets use it.
@@ -94,10 +137,89 @@ Frequency = 1
   ## We could also use other operator (round,ceiling,floor...)
   round(mean(Nile))
   ceiling(nileData)
+  length(Nile)
 #+end_src
 
 #+RESULTS:
 :results:
 [1] 919.35
+[1] 919
+[1] 920
+[1] 100
 :end:
+
++ Plot the Nile
+  We can plot the data in any way. As an example I have histogram for this data.
+#+begin_src R :results file
+  hist(Nile)
+#+end_src
+
+** Sequence
+
+Lets try a sequence of numbers. When I looked at ?seq, it actually looked confusing, so let's try it by practice.
+
+#+begin_src R :results output drawer
+  seq(-5, 5, by=.2) -> s3 
+  s4 <- seq(length=51, from=-5, by=.2)
+
+  ## Repeat ?rep
+  rep(1:4, 2)
+  rep(1:4, each = 2)
+  ## note the difference above
+
+  rep(1:4, c(2,2,2,2))     # same as second
+  rep(1:4, c(2,1,2,1))     # repeat for elements in vector
+  rep(1:4, each = 2, length.out = 4)    # first 4 only
+  rep(1:4, each = 2, length.out = 10)   # 8 integers plus two recycled 1's (seems like loop)
+  rep(1:4, each = 2, times = 3)         # length 24, 3 complete replications
+#+end_src
+
+#+RESULTS:
+:results:
+[1] 1 2 3 4 1 2 3 4
+[1] 1 1 2 2 3 3 4 4
+[1] 1 1 2 2 3 3 4 4
+[1] 1 1 2 3 3 4
+[1] 1 1 2 2
+ [1] 1 1 2 2 3 3 4 4 1 1
+ [1] 1 1 2 2 3 3 4 4 1 1 2 2 3 3 4 4 1 1 2 2 3 3 4 4
+:end:
+
+** Logical vectors
+Mostly used for /conditions/. Note: Avoid using ~T~ and ~F~, instead use ~TRUE~ and ~FALSE~.
+
+#+begin_quote
+The logical operators are <, <=, >, >=, == for exact equality and != for inequality. In addition if c1 and c2 are logical expressions, then c1 & c2 is their intersection (“and”), c1 | c2 is their union (“or”), and !c1 is the negation of c1. 
+#+end_quote
+
+#+begin_src R :results output drawer
+  temp = 22
+
+  temp >= 22
+  temp > 21
+  temp != 22.5
+  !temp == -22
+
+  ## Not Available
+  dump <- c(5:13,NA)
+  ## Above one defines a vector from 5 to 13
+  ## rest all index considered to be NA
+  dump
+  dump[1222]
+  is.na(dump[1234])
+
+  ## is. function is to check and give booleon whether it is TRUE or FALSE
+#+end_src
+
+#+RESULTS:
+:results:
+[1] TRUE
+[1] TRUE
+[1] TRUE
+[1] TRUE
+ [1]  5  6  7  8  9 10 11 12 13 NA
+[1] NA
+[1] TRUE
+:end:
+
 
