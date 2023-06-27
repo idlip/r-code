@@ -1,7 +1,7 @@
 #+title: Basic R learning notes
 #+author: Dilip
 
-/These are some of my initial R understanding notes, might be useful, might be another dump of basics. I'm not sure how this will be ny the time you see this repo./
+/These are some of my initial R understanding notes, might be useful, might be another dump of basics. I'm not sure how this will turn out, the time you see this repo./
 
 IMHO, org-mode and R is match made in Heaven! As it opens up endless possibility.
 
