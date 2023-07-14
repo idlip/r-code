@@ -5,10 +5,10 @@ Btw I highly recommend official manual to read: https://cran.r-project.org/doc/m
 You can download it in Pdf or Epub or Html
 
 * Starter Console
-A good thing is, you dont have to save these R codes to any file. You can just hover the block and press =C-c '= which runs ~org-edit-special~ and then you can simply view it as native R buffer, also you can press =C-RET= (Control+Enter) on any line and it will show console in another buffer, which is really cool and effective. This opens up great flexibility and endless integration with Emacs. Ultimately you will realize that, this is *match made in Heaven!*
+A good thing for emacs user is, you dont have to save these R codes to any file. You can just hover the block and press ~C-c '~ which runs ~org-edit-special~ and then you can simply view it as native R buffer, also you can press ~C-RET~ (Control+Enter) on any line and it will show console in another buffer, which is really cool and effective. This opens up great flexibility and endless integration with Emacs. Ultimately you will realize that, this is *match made in Heaven!*
 
 ** Basic Arithmetic
-#+begin_src R :results output drawer
+#+begin_src R :results output drawer :tangle ./codes/math.R
   5 + 6
 
   a <- 5
@@ -24,7 +24,7 @@ A good thing is, you dont have to save these R codes to any file. You can just h
 
 ** help(floor)
 First, it is better to self study and know what the function does, so you have the power of hack-ability. Rather than following some YouTube video.
-#+begin_src R
+#+begin_src R :tangle ./codes/help.R
   ## Go through this in console or press C-c C-d
   ?floor
 
@@ -33,7 +33,7 @@ First, it is better to self study and know what the function does, so you have t
 
 #+end_src
 
-#+begin_src R :results output drawer
+#+begin_src R :results output drawer :tangle ./codes/round.R
   ## Lets get some results
   ceiling(2.1)
 
@@ -62,7 +62,7 @@ First, it is better to self study and know what the function does, so you have t
 ** Vector
 Let's jump into data types
 
-#+begin_src R
+#+begin_src R :tangle ./codes/vector.R
   ## First we set vector to a variable (scores)
   scores <- c(10.4, 5.6, 3.1, 6.4, 21.7) 
 
@@ -90,7 +90,7 @@ Let's jump into data types
 
 
 + Vector Algebra
-#+begin_src R :results output drawer
+#+begin_src R :results output drawer :tangle ./codes/vector.R
   x = 7
   y = 2
   v <- 2*x + y + 1 
@@ -130,7 +130,7 @@ Frequency = 1
 :end:
 
 + Let's see the mean flow of the data
-#+begin_src R :results output drawer
+#+begin_src R :results output drawer :tangle ./codes/nile.R
   mean(Nile)
   nileData <- mean(Nile)
 
@@ -158,7 +158,7 @@ Frequency = 1
 
 Lets try a sequence of numbers. When I looked at ?seq, it actually looked confusing, so let's try it by practice.
 
-#+begin_src R :results output drawer
+#+begin_src R :results output drawer :tangle ./codes/seq.R
   seq(-5, 5, by=.2) -> s3 
   s4 <- seq(length=51, from=-5, by=.2)
 
@@ -192,7 +192,7 @@ Mostly used for /conditions/. Note: Avoid using ~T~ and ~F~, instead use ~TRUE~ 
 The logical operators are <, <=, >, >=, == for exact equality and != for inequality. In addition if c1 and c2 are logical expressions, then c1 & c2 is their intersection (“and”), c1 | c2 is their union (“or”), and !c1 is the negation of c1. 
 #+end_quote
 
-#+begin_src R :results output drawer
+#+begin_src R :results output drawer :tangle ./codes/logicVector.R
   temp = 22
 
   temp >= 22
@@ -207,8 +207,19 @@ The logical operators are <, <=, >, >=, == for exact equality and != for inequal
   dump
   dump[1222]
   is.na(dump[1234])
-
+  is.na(dump)
   ## is. function is to check and give booleon whether it is TRUE or FALSE
+
+  ## Missing values
+  ## You saw NA above.
+  0/0
+  Inf - Inf
+
+  ## What is this NaN? (Not a Number)
+  ## As expected they are not defined
+
+  is.na(0/0)
+  is.nan(Inf-Inf)
 #+end_src
 
 #+RESULTS:
@@ -222,4 +233,13 @@ The logical operators are <, <=, >, >=, == for exact equality and != for inequal
 [1] TRUE
 :end:
 
+
+** Object Types
+
+| Vectors     | Simple object with no attr                                           |
+| Matrix      | 2 dimensional (rows+col)                                             |
+| Array       | 3 dimensional                                                        |
+| Factors     | Categorical ways                                                     |
+| List        | Complex and generally better to use                                  |
+| Data frames | Like Data matrices where columns can be different (num, Categorical) |
 
