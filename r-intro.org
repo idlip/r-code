@@ -59,12 +59,44 @@ First, it is better to self study and know what the function does, so you have t
 [1] 4
 :end:
 
+** Approx
+There is even function called ~approx~ which can interpolate dataset.
+src_R{approx(x, y, xout, method = "linear", rule = 2, f = 0, ties = mean)}
+
+Take from a rbloggers post
+
+#+begin_quote
+• x: The input vector of x-coordinates (independent variable).
+• y: The input vector of y-coordinates (dependent variable).
+• xout: The vector of x-coordinates where you want to approximate the corresponding y-values.
+• method: The interpolation method, typically “linear” for linear interpolation.
+• rule: A numerical value specifying how to handle points outside the range of x. Default is 2, which means to extrapolate.
+• f: A smoothing parameter. Set it between 0 and 1 to get a smoother approximation.
+• ties: How to handle tied values. Default is to take the mean.
+#+end_quote
+
+#+begin_src R :results output :tangle ./codes/approx.R
+time <- c(0, 2, 5, 8, 10)
+temperature <- c(20, 25, 30, 28, 22)
+
+# Time point to estimate temperature
+time_estimate <- 6
+
+approximated_temp <- approx(time, temperature, xout = time_estimate)$y
+
+cat("Estimated temperature at time", time_estimate, "is", approximated_temp, "°C\n")
+
+#+end_src
+
+#+RESULTS:
+: Estimated temperature at time 6 is 29.33333 °C
+
 ** Vector
 Let's jump into data types
 
 #+begin_src R :tangle ./codes/vector.R
   ## First we set vector to a variable (scores)
-  scores <- c(10.4, 5.6, 3.1, 6.4, 21.7) 
+  scores <- c(10.4, 5.6, 3.1, 6.4, 21.7)
 
   ## This can also be assigned other way
   c(2.4, 17.2, 18.2, 5.7, -5.5) -> y
@@ -93,7 +125,7 @@ Let's jump into data types
 #+begin_src R :results output drawer :tangle ./codes/vector.R
   x = 7
   y = 2
-  v <- 2*x + y + 1 
+  v <- 2*x + y + 1
   v
 
   ## square root function
@@ -117,9 +149,9 @@ Nile is a built-in dataset. It has 100 years of annual flow data, so lets use it
 #+RESULTS:
 :results:
 Time Series:
-Start = 1871 
-End = 1970 
-Frequency = 1 
+Start = 1871
+End = 1970
+Frequency = 1
   [1] 1120 1160  963 1210 1160 1160  813 1230 1370 1140  995  935 1110  994 1020
  [16]  960 1180  799  958 1140 1100 1210 1150 1250 1260 1220 1030 1100  774  840
  [31]  874  694  940  833  701  916  692 1020 1050  969  831  726  456  824  702
@@ -159,7 +191,7 @@ Frequency = 1
 Lets try a sequence of numbers. When I looked at ?seq, it actually looked confusing, so let's try it by practice.
 
 #+begin_src R :results output drawer :tangle ./codes/seq.R
-  seq(-5, 5, by=.2) -> s3 
+  seq(-5, 5, by=.2) -> s3
   s4 <- seq(length=51, from=-5, by=.2)
 
   ## Repeat ?rep
@@ -189,7 +221,7 @@ Lets try a sequence of numbers. When I looked at ?seq, it actually looked confus
 Mostly used for /conditions/. Note: Avoid using ~T~ and ~F~, instead use ~TRUE~ and ~FALSE~.
 
 #+begin_quote
-The logical operators are <, <=, >, >=, == for exact equality and != for inequality. In addition if c1 and c2 are logical expressions, then c1 & c2 is their intersection (“and”), c1 | c2 is their union (“or”), and !c1 is the negation of c1. 
+The logical operators are <, <=, >, >=, == for exact equality and != for inequality. In addition if c1 and c2 are logical expressions, then c1 & c2 is their intersection (“and”), c1 | c2 is their union (“or”), and !c1 is the negation of c1.
 #+end_quote
 
 #+begin_src R :results output drawer :tangle ./codes/logicVector.R
@@ -242,4 +274,3 @@ The logical operators are <, <=, >, >=, == for exact equality and != for inequal
 | Factors     | Categorical ways                                                     |
 | List        | Complex and generally better to use                                  |
 | Data frames | Like Data matrices where columns can be different (num, Categorical) |
-
