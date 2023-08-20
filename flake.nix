@@ -10,30 +10,29 @@
         inherit system;
         # config.allowUnfree = true;
       };
-      
+
     in {
       devShell.${system} = pkgs.mkShell {
 
         nativeBuildInputs = [ pkgs.bashInteractive ];
-        buildInputs = with pkgs; [ 
-          R
-          (with rPackages; 
-            [
-              lintr
-              languageserver
-              # dplyr
-              # tidyr
-              # stringr
-              # lubricate
-              # httr
-              # ggvis
-              # ggplot2
-              # shiny
-              # rio
-              # rmarkdown
-              # add more packages (https://search.nixos.org)
-            ])
-        ];
+        buildInputs = builtins.attrValues {
+          inherit (pkgs)
+            R;
+          inherit (pkgs.rPackages)
+            lintr
+            languageserver;
+          # dplyr
+          # tidyr
+          # stringr
+          # lubricate
+          # httr
+          # ggvis
+          # ggplot2
+          # shiny
+          # rio
+          # rmarkdown
+          # add more packages (https://search.nixos.org)
+        };
 
         # Example for rstudio
         # pkgs.rstudioWrapper.override {
