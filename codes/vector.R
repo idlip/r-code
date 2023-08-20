@@ -1,5 +1,5 @@
 ## First we set vector to a variable (scores)
-scores <- c(10.4, 5.6, 3.1, 6.4, 21.7) 
+scores <- c(10.4, 5.6, 3.1, 6.4, 21.7)
 
 ## This can also be assigned other way
 c(2.4, 17.2, 18.2, 5.7, -5.5) -> y
@@ -24,7 +24,7 @@ y[0:1]
 
 x = 7
 y = 2
-v <- 2*x + y + 1 
+v <- 2*x + y + 1
 v
 
 ## square root function

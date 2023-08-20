@@ -1,4 +1,4 @@
-seq(-5, 5, by=.2) -> s3 
+seq(-5, 5, by=.2) -> s3
 s4 <- seq(length=51, from=-5, by=.2)
 
 ## Repeat ?rep
